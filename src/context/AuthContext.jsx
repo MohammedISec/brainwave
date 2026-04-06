@@ -2,8 +2,8 @@ import { createContext, useContext, useState, useEffect } from "react";
 
 const AuthContext = createContext(null);
 
-const SSO_LOGIN_URL = "http://localhost:8001/login";
-const SSO_LOGOUT_URL = "http://localhost:8001/logout";
+const SSO_LOGIN_URL = "http://localhost:3001/login";
+const SSO_LOGOUT_URL = "http://localhost:3001/logout";
 const TOKEN_URL = "http://localhost:8001/api/auth/token/";
 const PROFILE_URL = "http://localhost:8001/api/auth/me/";
 const CLIENT_ID = "client_vobl3vosnsfkaaan6vxkhcpz";
