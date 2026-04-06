@@ -13,7 +13,7 @@ const Header = () => {
   const { pathname, hash } = useLocation();
   const navigate = useNavigate();
   const [openNavigation, setOpenNavigation] = useState(false);
-  const { user, logout } = useAuth();
+  const { user, redirectToSSO, logout } = useAuth();
 
   const toggleNavigation = () => {
     if (openNavigation) {
@@ -90,7 +90,7 @@ const Header = () => {
             >
               New account
             </a>
-            <Button className="hidden lg:flex" href="/login">
+            <Button className="hidden lg:flex" onClick={redirectToSSO}>
               Sign in
             </Button>
           </>
