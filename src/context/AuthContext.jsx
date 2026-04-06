@@ -2,10 +2,9 @@ import { createContext, useContext, useState, useEffect } from "react";
 
 const AuthContext = createContext(null);
 
-const API_BASE = "http://localhost:8001";
-const LOGIN_URL = `${API_BASE}/api/auth/login/`;
-const PROFILE_URL = `${API_BASE}/api/auth/me/`;
-const LOGOUT_URL = `${API_BASE}/api/auth/logout/`;
+const LOGIN_URL = "/api/auth/login/";
+const PROFILE_URL = "/api/auth/me/";
+const LOGOUT_URL = "/api/auth/logout/";
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
