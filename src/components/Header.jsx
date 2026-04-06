@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
 
 import { brainwave } from "../assets";
@@ -11,8 +11,9 @@ import { useAuth } from "../context/AuthContext";
 
 const Header = () => {
   const { pathname, hash } = useLocation();
+  const navigate = useNavigate();
   const [openNavigation, setOpenNavigation] = useState(false);
-  const { user, loginRedirect, logout } = useAuth();
+  const { user, logout } = useAuth();
 
   const toggleNavigation = () => {
     if (openNavigation) {
@@ -55,13 +56,7 @@ const Header = () => {
               <a
                 key={item.id}
                 href={item.url}
-                onClick={(e) => {
-                  if (item.onClick) {
-                    e.preventDefault();
-                    item.onClick({ loginRedirect });
-                  }
-                  handleClick();
-                }}
+                onClick={handleClick}
                 className={`block relative font-code text-2xl uppercase text-n-1 transition-colors hover:text-color-1 ${
                   item.onlyMobile ? "lg:hidden" : ""
                 } px-6 py-6 md:py-8 lg:-mr-0.25 lg:text-xs lg:font-semibold ${
@@ -81,7 +76,7 @@ const Header = () => {
         {user ? (
           <>
             <span className="hidden mr-4 text-n-1 text-sm lg:block">
-              {user.display_name || user.username || user.email}
+              {user.full_name || user.username || user.email}
             </span>
             <Button className="hidden lg:flex" onClick={logout}>
               Sign out
@@ -95,7 +90,7 @@ const Header = () => {
             >
               New account
             </a>
-            <Button className="hidden lg:flex" onClick={loginRedirect}>
+            <Button className="hidden lg:flex" href="/login">
               Sign in
             </Button>
           </>
