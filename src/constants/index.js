@@ -66,8 +66,9 @@ export const navigation = [
   {
     id: "5",
     title: "Sign in",
-    url: "#login",
+    url: "#",
     onlyMobile: true,
+    onClick: ({ loginRedirect }) => loginRedirect(),
   },
 ];
 
